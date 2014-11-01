@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+
+    <meta name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="../septa-map.html">
+
+  </head>
+
+    <body unresolved>
+
+      <septa-map></septa-map>
+
+      <script>
+        suite('<septa-map-story>', function() {
+
+          suite( 'with no attributes', function(){
+
+            setup(function() {
+              el = document.querySelector('septa-map-story').cloneNode();
+            });
+
+            test( 'todo', function( done ) {
+
+            });
+
+          });
+
+        });
+      </script>
+  </body>
+</html>

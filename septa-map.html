@@ -1,0 +1,58 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<link rel="import" href="bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="bower_components/google-map/google-map.html">
+
+<polymer-element name="septa-map" attributes="">
+  <template>
+
+    <link rel="stylesheet" href="septa-map.css">
+
+    <core-ajax
+      auto
+      url="http://www.corsproxy.com/www3.septa.org/hackathon/TransitViewAll/"
+      handleAs="json"
+      on-core-response="{{dataLoaded}}">
+    </core-ajax>
+
+    <template if="{{mapReady}}">
+      <google-map id="map" latitude="39.9522" longitude="-75.1639" fit>
+        <template repeat="{{ vehicle in vehicles }}">
+          <google-map-marker
+            latitude="{{vehicle.lat}}"
+            longitude="{{vehicle.lng}}"
+            title="{{vehicle.Direction}} - {{vehicle.destination}}">
+            {{vehicle.Direction}} - {{vehicle.destination}}
+          </google-map-marker>
+        </template>
+      </google-map>
+    </template>
+
+
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        vehicles: [],
+        mapReady: false,
+
+        dataLoaded: function( e ) {
+          var rawData = e.detail.response[ Object.keys( e.detail.response )[ 0 ] ];
+          for( var i = 0; i < rawData.length; i++ ) {
+            var blah = rawData[ i ][ Object.keys( rawData[ i ] )[0] ];
+            for( var j = 0; j < blah.length; j++ ){
+              this.vehicles.push( blah[j] );
+            }
+
+          }
+          this.mapReady = true;
+
+        }
+
+      });
+
+    })();
+  </script>
+</polymer-element>

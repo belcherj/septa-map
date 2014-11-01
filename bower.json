@@ -1,0 +1,12 @@
+{
+  "name": "hacker-news",
+  "version": "0.0.1",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.2",
+    "web-component-tester": "Polymer/web-component-tester#~1.2.0",
+    "core-component-page": "Polymer/core-component-page#~0.4.2",
+    "core-ajax": "Polymer/core-ajax#~0.4.2",
+    "google-map": "GoogleWebComponents/google-map#~0.3.2",
+    "polymer-jsonp": "PolymerLabs/polymer-jsonp#~0.3.0"
+  }
+}
